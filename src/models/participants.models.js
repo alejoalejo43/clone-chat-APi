@@ -1,10 +1,10 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
-const db = require("../utils/database");
-const Conversations = require("./conversations.models");
-const Users = require("./users.models");
+const db = require('../utils/database');
+const Conversations = require('./conversations.models'); //?importar para las llaves foraneas
+const Users = require('./users.models');
 
-const Participants = db.define("participants", {
+const Participants = db.define('participants', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -13,22 +13,22 @@ const Participants = db.define("participants", {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-        model: Users,
-        key: 'id'
-    }
+      model: Users,
+      key: 'id',
+    },
   },
   conversationId: {
     type: DataTypes.UUID,
-    allowNull: false, 
+    allowNull: false,
     references: {
-        model: Conversations,
-        key: 'id'
-    }
+      model: Conversations,
+      key: 'id',
+    },
   },
   isAdmin: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
-module.exports = Participants
+module.exports = Participants;

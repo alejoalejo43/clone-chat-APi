@@ -1,32 +1,25 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize'); //?importar para la utilizacion del tipo de datos
+const db = require('../utils/database');
 
-const db = require("../utils/database");
-//const Users = require("./users.models");
-
-const Conversations = db.define("conversations", {
+//?modelo de conversaciones
+const Conversations = db.define('conversations', {
+  //?creacion de la tabla
   id: {
-    type: DataTypes.UUID,
-    primaryKey: true,
+    type: DataTypes.UUID, //?propiedad que define el tipo de dato
+    primaryKey: true, //?restricciones
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  profileImage:{
-    type: DataTypes.STRING
+  profileImage: {
+    type: DataTypes.STRING,
   },
-  // createdBy: {
-  //   type: DataTypes.UUID,
-  //   allowNull: false,
-  //   references: {
-  //       model: Users,
-  //       key: 'id'
-  //   }
-  // },
+
   isGroup: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
-module.exports = Conversations
+module.exports = Conversations;
